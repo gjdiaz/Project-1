@@ -1,0 +1,67 @@
+var tableBody = document.getElementById('repo-table');
+var fetchButton = document.getElementById('fetch-button');
+
+function getApi() {
+  // fetch request gets a list of all the repos for the node.js organization
+  fetch("https://weatherapi-com.p.rapidapi.com/forecast.json?q=London&days=3", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "weatherapi-com.p.rapidapi.com",
+		"x-rapidapi-key": "901cbaf60cmsh5e5bea7d5f1a8bap1edabajsn89697e7fb7b8"
+	}
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});
+}
+
+fetchButton.addEventListener('click', getApi);
+
+------- or ------------
+
+
+var tableBody = document.getElementById('repo-table');
+var fetchButton = document.getElementById('fetch-button');
+
+function getApi() {
+  // fetch request gets a list of all the repos for the node.js organization
+  fetch("https://weatherapi-com.p.rapidapi.com/forecast.json?q=London&days=3", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "weatherapi-com.p.rapidapi.com",
+		"x-rapidapi-key": "901cbaf60cmsh5e5bea7d5f1a8bap1edabajsn89697e7fb7b8"
+	}
+    .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data)
+        //Loop over the data to generate a table, each table row will have a link to the repo url
+        for (var i = 0; i < data.length; i++) {
+          // Creating elements, tablerow, tabledata, and anchor
+          var createTableRow = document.createElement('tr');
+          var tableData = document.createElement('td');
+          var link = document.createElement('a');
+  
+          // Setting the text of link and the href of the link
+          link.textContent = data[i].html_url;
+          link.href = data[i].html_url;
+  
+          // Appending the link to the tabledata and then appending the tabledata to the tablerow
+          // The tablerow then gets appended to the tablebody
+          tableData.appendChild(link);
+          createTableRow.appendChild(tableData);
+          tableBody.appendChild(createTableRow);
+        }
+    // the semicolon below keeps console loggin as an error
+      });
+}
+
+fetchButton.addEventListener('click', getApi);
+
+----------------------------------------------------------
+// saving information as client-side storage
+
