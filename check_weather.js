@@ -1,9 +1,6 @@
-
-// need to add function so results display on webpage
-// weather may not display as table... reformat as necessary
-// see HTML lines 11-21 for Check Weather function
-
-var tableBody = document.getElementById('weather-table');
+// borrowed from activity 9 Demo Dynamic
+// reference https://w3collective.com/fetch-display-api-data-javascript/
+var weatherContainer = document.getElementById('weather');
 var fetchButton = document.getElementById('fetch-button');
 
 function getApi() {
@@ -19,9 +16,12 @@ function getApi() {
       })
       .then(function (data) {
         console.log(data);
-      });
-}
+        for (var i = 0; i < data.length; i++) {
+          var current = document.createElement('h3');
+          current.textContent = data[i].condition.text;
+          weatherContainer.append(current);
+      };
+});
 
 fetchButton.addEventListener('click', getApi);
-
-
+}
