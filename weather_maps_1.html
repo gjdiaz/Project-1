@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather and Maps</title>
+    <link rel="stylesheet" href="./local_storage.css" />
+    <link rel="stylesheet" type="text/css" href="./modal.css" />
+    <script src="./maps_api.js"></script>
+    <script src="./check_weather.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  </head>
+  <body>
+    <div>
+        <button id="fetch-button">
+          Check Weather
+        </button>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+          </div>
+        </div>
+    <div>
+          <p id="current"></p>
+          <p id="forecast"></p>
+        </div>
+      <br>
+      <br>
+    </div>
+
+    <div class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">The weather for today and tomorrow is</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Content ... -->
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success">Save changes</button>
+          <button class="button">Cancel</button>
+        </footer>
+      </div>
+    </div>    
+<!-- Modal for maps -->
+<button id="mapsBtn">Map</button>
+<img> 
+  <!-- Modal content -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p> 
+  </div> 
+</div>
+
+
+    <section class="submit-project">
+      <h2>Enter a Project</h2>
+
+    <script src="./local_storage.js"></script>
+    <script src="./check_weather.js"></script>
+  </body>
+</html>

@@ -9,7 +9,8 @@ function getApi() {
 		"x-rapidapi-host": "weatherapi-com.p.rapidapi.com",
 		"x-rapidapi-key": "901cbaf60cmsh5e5bea7d5f1a8bap1edabajsn89697e7fb7b8"
 	}
-})
+// single curly bracket was causing errors, two braces needed
+}})
 .then(response => {
 	console.log(response);
 })
@@ -63,5 +64,30 @@ function getApi() {
 fetchButton.addEventListener('click', getApi);
 
 ----------------------------------------------------------
-// saving information as client-side storage
+// saving information as client-side storage 
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage
+// create an instance of a db object to store the open database in
+// declare globally since it will be used in a few places
+var db;
 
+// event handler, called when the window's load event fires
+window.onload = function() {
+   var request = window.indexedDB.open('notes_db', 1);
+};
+
+
+// onerror handler signifies that the database didn't open successfully
+request.onerror = function() {
+  console.log('Database failed to open');
+};
+
+// onsuccess handler signifies that the database opened successfully
+request.onsuccess = function() {
+  console.log('Database opened successfully');
+
+  // Store the opened database object in the db variable. This is used a lot below
+  db = request.result;
+
+  // Run the displayData() function to display the notes already in the IDB
+  displayData();
+};

@@ -1,36 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fetch Demo</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body class="min-100-vh flex-column">
-    <header class="p-5 text-center text-white bg-primary">
-      <h1>Server-Side APIs</h1>
-    </header>
-    <main class="flex-row justify-center align-center col-auto p-4 bg-light">
-      <section class="card card-rounded col-7 bg-white">
-        <header class="card-header text-center">
-          <h2 class="text-white">
-            Fetch Demo
-          </h2>
-        </header>
-        <div class="text-center pt-4">
-          <button class="btn btn-danger" id="fetch-button">
-            Click Me
-          </button>
-        </div>
-        <table class="card-body table mx-auto my-4">
-          <th>
-            <p class="my-4">Results</p>
-          </th>
-          <tbody id="repo-table" class="mx-auto text-center"></tbody>
-        </table>
-      </section>
-      <script src="./script.js"></script>
-    </main>
-  </body>
-</html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Assets/CSS/style.css">
 
+    <!-- links for modal to function -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <title>Stratum Project Management Application</title>
+
+</head>
+<body>
+    <ul id="header-buttons">
+
+        <li id="project"><button type="button" id="launchProject">Add Project</button></li>
+        <div id="modal" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="box">
+              <article class="media">
+                <div class="modal">
+                  <div class="modal-background"></div>
+                  <div class="modal-card">
+                    <header class="modal-card-head">
+                      <p class="modal-card-title">Add Project</p>
+                      <button class="delete" aria-label="close"></button>
+                    </header>
+                    <section class="modal-card-body">
+                      <form id="project-info">
+                        <label for="pnumber">Project Number</label><br>
+                        <input type="text" class="project-item" id="pnumber" name="pnumber"><br>
+                        <label for="address">Project Address</label><br>
+                        <input type="text" class="project-item" id="address" name="address"><br><br>
+                        <label for="sdate">Start Date</label><br>
+                        <input type="text" class="project-item" id="sdate" name="sdate"><br>
+                        <label for="fdate">Finish Date</label><br>
+                        <input type="text" class="project-item" id="fdate" name="fdate"><br><br>
+                      </form> 
+                    </section>
+                    <footer class="modal-card-foot">
+                        <input type="submit"></input>
+                        <button class="button is-danger">Cancel</button>
+                      <button class="modal-close is-large" aria-label="close"></button>
+                    </footer>
+                  </div>
+                </div>
+              </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      
+
+        <li id="schedule"><a href="./Schedule/schedule.html" target="_blank"><button type="button">Schedule</button></a></li>
+
+        <li id="report"><a href="./Report/report.html" target="_blank"><button type="button">Report</button></a></li>
+
+        <li id="weather"><button type="button">Weather</button></li>
+        <!-- weather modal button 
+        <div id="modal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+              <div class="box">
+                <article class="media">
+                  <div class="modal">
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+                      <header class="modal-card-head">
+                        <p class="modal-card-title">Weather</p>
+                        <button class="delete" aria-label="close"></button>
+                      </header>
+                      <section class="modal-card-body">
+                        <p id="today"></p>
+                        <p id="current"></p>
+                        <p id="tomorrow"></p>
+                        <p id="forecast"></p>
+                      </section>
+                      <footer class="modal-card-foot">
+                        <button class="modal-close is-large" aria-label="close"></button>
+                      </footer>
+                    </div>
+                  </div>
+                </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <button class="button is-link is-large" id="launchModal">Check Weather with Modal</button> -->
+      
+        <li id="search" class=>
+            <input id="search-bar" placeholder="Project Num/Add..." rows="1"></input>
+            <label for="search-bar" id="search-label"><button id="searchBtn">Search</button></label>
+            
+        </li>
+
+    </ul>
+
+    <table style="width: 100%">
+        <tr class="tableHeaders">
+            <th>Project Number</th>
+
+            <th>Project Address</th>
+
+            <th>Start Date</th>
+
+            <th>
+                <label for="walk">Job Walked</label>
+                <select name="walk" id="walk">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </th>
+            
+            <th>Finished</th>
+
+            <th>
+                <label for="status">Status</label>
+                <select name="status" id="status">
+                    <option value="Green">Green</option>
+                    <option value="Yellow">Yellow</option>
+                    <option value="Red">Red</option>
+                </select>
+            </th>
+
+        </tr>
+        <tr class="tableContents">
+            <td class="columnOne"><a href="#"></a></td>
+
+            <td class="columnTwo"><a href="#"></a></a></td>
+
+            <td class="columnThree"><a href="#"></a></td>
+
+            <td class="columnFour"><a href="#"></a></td>
+
+            <td class="columnFive"><a href="#"></a></td>
+
+            <td class="columnSix"><a href="#"></a></td>
+        </tr>
+
+    </table>
+    <script src="./assets/JavaScript/script.js"> </script>
+    <script src="./add_project_modal.js"> </script>
+
+</body>
+</html>

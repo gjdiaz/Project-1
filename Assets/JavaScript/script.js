@@ -1,12 +1,31 @@
-// borrowed from activity 9 Demo Dynamic
-// reference https://w3collective.com/fetch-display-api-data-javascript/
+function myFunction() {
+    // Declare variables
+    var input, filter, tr, td, a, i, txtValue;
+    input = document.getElementById('search-bar');
+    filter = input.value;
+    tr = document.getElementById("tableContents");
+    td = tr.getElementsByTagName('td');
+  
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < td.length; i++) {
+      a = td[i].getElementsByClassName("columnOne", "columnTwo")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.indexOf(filter) > -1) {
+        td[i].style.display = "";
+      } else {
+        td[i].style.display = "none";
+      }
+    }
+  }
+// $(document).foundation()
+
+// weather api 
 var current = document.getElementById('current');
 var forecast = document.getElementById('forecast');
 var fetchButton = $("#launchModal");
 var today = document.getElementById('today');
 var tomorrow = document.getElementById('tomorrow');
 function getApi() {
-  // fetch request gets a list of all the repos for the node.js organization
   fetch("https://weatherapi-com.p.rapidapi.com/forecast.json?q='San Antonio'&days=1", {
 	"method": "GET",
 	"headers": {
@@ -18,9 +37,6 @@ function getApi() {
       })
       .then(function (data) {
         console.log(data);
-        //for (var i = 0; i < data.length; i++) {
-          //var current = document.createElement('h3');
-          //var forecast = document.createElement('h3');
           today.innerHTML = "Today's weather for San Antonio is ";
           tomorrow.innerHTML = "Tomorrow's weather will be ";
           current.innerHTML = data.current.condition.text;
@@ -29,25 +45,7 @@ function getApi() {
 
   };
 
-
-
-/* var btn = document.querySelector("myBtn");
-var modal = document.getElementById("myModal");
-var span = document.getElementsByClassName("close")[0];
-btn.onclick = function () {
-  modal.style.display = "block";
-}
-
-span.onclick = function()  {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event)  {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-} */
-
+// check weather button cals weather api and modal function
 fetchButton.click(function() {
   getApi();
   $(".modal").addClass("is-active");
